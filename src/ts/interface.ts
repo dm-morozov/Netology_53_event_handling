@@ -6,3 +6,9 @@ export interface Movie {
   imdb: number;
   year: number;
 }
+
+export interface ITask {
+  id: number;
+  title: string;
+  pinned: boolean;
+}
