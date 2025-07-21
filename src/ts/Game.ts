@@ -8,7 +8,7 @@ export default class Game {
   private goblinVisionTimerId: number | null = null;
 
   private score: number = 0;
-  private misses: number = 0; 
+  private misses: number = 0;
 
   constructor(size: number = 4) {
     console.log("Game initialized");
@@ -45,7 +45,7 @@ export default class Game {
     const scopeNumber = document.querySelector(".scope__number");
     if (scopeNumber) {
       scopeNumber.textContent = String(this.score);
-    }    
+    }
     this.punchTheGoblin();
   }
 
@@ -74,17 +74,17 @@ export default class Game {
       container?.appendChild(rowEl);
     }
 
-    const btnStop = document.createElement('input');
+    const btnStop = document.createElement("input");
     btnStop.type = "button";
     btnStop.value = "Стоп";
     btnStop.classList.add("btn", "btn-stop");
     btnStop.addEventListener("click", () => {
       if (btnStop.value === "Стоп") {
-      this.stop();
-      btnStop.value = "Старт";
+        this.stop();
+        btnStop.value = "Старт";
       } else {
-      this.start();
-      btnStop.value = "Стоп";
+        this.start();
+        btnStop.value = "Стоп";
       }
     });
     container?.appendChild(btnStop);
@@ -122,7 +122,7 @@ export default class Game {
           const scopeNumber = document.querySelector(".scope__number");
           if (scopeNumber) {
             scopeNumber.textContent = String(this.score);
-          }  
+          }
         } else {
           this.misses++;
           if (this.misses >= 5) {
@@ -135,7 +135,7 @@ export default class Game {
             missesNumber.textContent = String(this.misses);
           }
         }
-      })
-    })
+      });
+    });
   }
 }

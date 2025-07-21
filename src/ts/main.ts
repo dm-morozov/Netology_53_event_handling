@@ -1,7 +1,7 @@
 // main.ts
 import Game from "./Game";
 import MovieList from "./MovieList";
-import { ITask, Movie } from "./interface";
+import { Movie } from "./interface";
 import movieDataJSON from "./movieData.json";
 import Tasks from "./TOPTasks";
 

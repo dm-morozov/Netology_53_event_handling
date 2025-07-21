@@ -8,7 +8,9 @@ export default class Tasks {
 
   constructor() {
     this.input = document.querySelector("#description__top-tasks");
-    this.pinnedTasksContainer = document.querySelector(".pinned-tasks__top-tasks");
+    this.pinnedTasksContainer = document.querySelector(
+      ".pinned-tasks__top-tasks",
+    );
     this.allTasksContainer = document.querySelector(".all-tasks__top-tasks");
 
     this.loadFromStorage();
@@ -64,14 +66,14 @@ export default class Tasks {
 
     const filter = this.input?.value.trim().toLowerCase() || "";
 
-    const pinnedTasks = this.tasksData.filter(task => task.pinned);
-    const unpinnedTasks = this.tasksData.filter(task => !task.pinned);
+    const pinnedTasks = this.tasksData.filter((task) => task.pinned);
+    const unpinnedTasks = this.tasksData.filter((task) => !task.pinned);
 
     // Pinned
     if (pinnedTasks.length === 0) {
       this.pinnedTasksContainer.textContent = "No pinned tasks";
     } else {
-      pinnedTasks.forEach(task => {
+      pinnedTasks.forEach((task) => {
         const taskEl = this.createTaskElement(task);
         this.pinnedTasksContainer?.appendChild(taskEl);
       });
@@ -79,15 +81,15 @@ export default class Tasks {
 
     // All Tasks (фильтрация)
     const filteredTasks = filter
-      ? unpinnedTasks.filter(task =>
-          task.title.toLowerCase().startsWith(filter)
+      ? unpinnedTasks.filter((task) =>
+          task.title.toLowerCase().startsWith(filter),
         )
       : unpinnedTasks;
 
     if (filteredTasks.length === 0) {
       this.allTasksContainer.textContent = "No tasks found";
     } else {
-      filteredTasks.forEach(task => {
+      filteredTasks.forEach((task) => {
         const taskEl = this.createTaskElement(task);
         this.allTasksContainer?.appendChild(taskEl);
       });
@@ -135,7 +137,7 @@ export default class Tasks {
   }
 
   private deleteTask(id: number) {
-    this.tasksData = this.tasksData.filter(task => task.id !== id);
+    this.tasksData = this.tasksData.filter((task) => task.id !== id);
     this.saveToStorage();
     this.render();
   }
@@ -157,5 +159,4 @@ export default class Tasks {
     const errorEl = document.querySelector(".task-error");
     if (errorEl) errorEl.remove();
   }
-
 }
